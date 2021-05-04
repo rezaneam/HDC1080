@@ -1,3 +1,27 @@
+/*!
+ * @file LIS3DH.cpp
+ *
+ *  @mainpage Texas Instruments HDC1080 sensor Low-power High Accuracy humidity and temperature sensor
+ *
+ *  @section Information
+ *
+ *  This is a library for the Texas Instruments HDC1080 sensor Low-power High Accuracy humidity and temperature sensor
+ * 
+ *  This driver is written by inspiring from [ClosedCube HDC1080 library](https://github.com/closedcube/ClosedCube_HDC1080_Arduino).
+ *
+ *  Find more detail on the sensor on https://www.ti.com/product/HDC1080
+ *
+ *  This library is only supporting I2C interface not SPI.
+ *
+ *  @section author Author
+ *
+ *  MReza Naeemabadi
+ *
+ *  @section license License
+ *
+ *  MIT license, all text above must be included in any redistribution
+ */
+
 #pragma once
 #include <Arduino.h>
 #include <Wire.h>
@@ -48,7 +72,7 @@ public:
 			uint8_t SoftwareReset : 1;
 		};
 	} HDC1080_Registers;
-	bool Initialize(TwoWire *theWire);
+	bool Initialize(TwoWire *theWire = Wire, bool isDebug = false);
 
 	HDC1080_SerialNumber readSerialNumber();
 

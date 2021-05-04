@@ -1,16 +1,18 @@
 #include <HDC1080.h>
 
-bool HDC1080::Initialize(TwoWire *theWire)
+bool HDC1080::Initialize(TwoWire *theWire, bool isDebug)
 {
 	_wire = theWire;
 	if (readManufacturerId() != HDC1080_VALUE_TEXAS_ID)
 	{
-		printf(">> HDC1080: Device Manufacture ID doesn't match. ID: %X but Expected %X\r\n", readManufacturerId(), HDC1080_VALUE_TEXAS_ID);
+		if (isDebug)
+			printf(">> HDC1080: Device Manufacture ID doesn't match. ID: %X but Expected %X\r\n", readManufacturerId(), HDC1080_VALUE_TEXAS_ID);
 		return false;
 	}
 	if (readDeviceId() != HDC1080_VALUE_DEVICE_ID)
 	{
-		printf(">> HDC1080: Device ID doesn't match. ID: %X but Expected %X\r\n", readDeviceId(), HDC1080_VALUE_DEVICE_ID);
+		if (isDebug)
+			printf(">> HDC1080: Device ID doesn't match. ID: %X but Expected %X\r\n", readDeviceId(), HDC1080_VALUE_DEVICE_ID);
 		return false;
 	}
 	return true;
