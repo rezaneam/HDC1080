@@ -1,8 +1,8 @@
 #include <HDC1080.h>
 
-bool HDC1080::Initialize(TwoWire *theWire, bool isDebug)
+bool HDC1080::Initialize(TwoWire &theWire, bool isDebug)
 {
-	_wire = theWire;
+	_wire = &theWire;
 	if (readManufacturerId() != HDC1080_VALUE_TEXAS_ID)
 	{
 		if (isDebug)

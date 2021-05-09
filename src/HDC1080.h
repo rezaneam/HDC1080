@@ -72,7 +72,7 @@ public:
 			uint8_t SoftwareReset : 1;
 		};
 	} HDC1080_Registers;
-	bool Initialize(TwoWire *theWire = Wire, bool isDebug = false);
+	bool Initialize(TwoWire &theWire = Wire, bool isDebug = false);
 
 	HDC1080_SerialNumber readSerialNumber();
 
